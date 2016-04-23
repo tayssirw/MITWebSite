@@ -69,56 +69,57 @@
         	<h2 class="indent-2">New project</h2>
 		</div>
         <div class="grid_5">
-        	<form id="form">
+        	<h:form id="form">
                 <div class="text-info">All fields with an * are required</div>
                 <div class="success">Contact form submitted!<br/>
                 <strong>We will be in touch soon.</strong> </div>
                 <fieldset>
                 <label class="name">
                         <span class="title">ID*</span>
-                        <input type="number" value=" "/>
+                         <input type="number" value="#{projetBean.projet.idProjet} "/>
                         <br class="clear"/>
                         <span class="empty error-empty">*This field is required.</span>
                     </label>
                 
                     <label class="name">
                         <span class="title">Titre*</span>
-                        <input type="text" value=" "/>
+                        <input type="text" value="#{projetBean.projet.titreProjet} "/>
                         <br class="clear"/>
                         <span class="error error-empty">*This is not a valid name.</span><span class="empty error-empty">*This field is required.</span>
                     </label>
                     <label class="message">
                         <span class="title">description*</span>
-                        <textarea> </textarea>
+                        <h:inputTextarea value="#{projetBean.projet.descProjet}" />
                         <br class="clear"/>
                         <span class="error">*The message is too short.</span> <span class="empty">*This field is required.</span>
                     </label>
                     <label class="name">
                         <span class="title">Task number*</span>
-                        <input type="number" value=" "/>
+                        <input type="number" value="#{projetBean.projet.nbrTache} "/>
                         <br class="clear"/>
                         <span class="empty error-empty">*This field is required.</span>
                     </label>
                     <label>
                         <span class="title">date début*</span>
-                        <input type="date" value=" "/>
+                        <input type="date" value="#{projetBean.projet.dateDebut} "/>
                         <br class="clear"/>
                         <span class="empty error-empty">*This field is required.</span>
                     </label>
                     <label>
                     	<span class="title">date fin*</span>
-                        <input type="date" value=" "/>
+                        <input type="date" value="#{projetBean.projet.dateFin} "/>
                         <br class="clear"/>
                         <span class="empty error-empty">*This field is required.</span>
                     </label>
                     
                     <div class="clear"></div>
-               <p:button onclick="#{ProjetBean.ajout(Projet)}"></p:button>
+               <h:commandButton action="#{projetBean.ajout()}"  value="Ajouter" />
+            <h:outputText value="#{projetBean.resAjout}"/>
                   <!-- 
                   <a data-type="submit" class="btn" onclick="#{ProjetBean.ajout()}">Ajouter</a>
                    -->  
             	</fieldset>
-            </form>
+            </h:form>
 		</div>
         
 	</div>

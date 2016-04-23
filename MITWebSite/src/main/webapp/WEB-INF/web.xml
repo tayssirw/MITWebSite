@@ -14,7 +14,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>application-context.xml</param-value>
+		<param-value>/WEB-INF/application-context.xml</param-value>
 	</context-param>
 	<context-param>
 		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
@@ -45,6 +45,9 @@
 		<servlet-name>Faces Servlet</servlet-name>
 	</filter-mapping>
 
+<listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
 
 	<!-- <listener> -->
 	<!-- <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> -->

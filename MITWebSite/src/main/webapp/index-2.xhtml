@@ -122,68 +122,24 @@ oluty gtrew lokiju qwertynou.             <br/>
 
 
 
-
-
-    
-     <p:dataTable var="Projet" value="#{ProjetBean.listProjet}" paginator="true" rows="3" id="tableProjet" scrollable="true" resizableColumns="true" editable="true" emptyMessage="Aucun ligne trouvée">
+<p:dataTable var="Proj" value="#{projetBean.listProjet}">
+    <p:column headerText="Id">
+        <h:outputText value="#{Proj.idProjet}" />
+    </p:column>
  
-                 
-        <p:column headerText="ID" style="width:100%" filterBy="#{Projet.idProjet}" filterMatchMode="contains" filterOptions="">
-      	<f:facet name="output">
-        <h:outputText value="#{Projet.idProjet}" />
-        </f:facet>
-        <h:outputText value="#{Projet.idProjet}" />
-        </p:column>
-         
-        <p:column headerText="Titre" style="width:170%" filterBy="#{Projet.titreProjet}" filterMatchMode="contains" filterOptions="">
-
-        <p:cellEditor>
-        <f:facet name="output">
-<!--                <p:panelGrid width="170" columns="1" border="0"> -->
-                
-         <h:outputLabel value= "#{Projet.titreProjet}" style="width:100%"/>
-
-<!--          </p:panelGrid> -->
-        </f:facet>
-        <f:facet name="input">
-        <p:inputText id="lib3" value="#{Projet.titreProjet}" style="width:100%" />
-        </f:facet>
-         </p:cellEditor>
-        </p:column>
-        
-        
-       
-         
-         
-                 <p:column headerText="Description" style="width:100%" filterBy="#{Projet.descProjet}" filterMatchMode="contains">
-        <p:cellEditor>
-        <f:facet name="output">
-        <h:outputText value="#{Projet.descProjet}" />
-        </f:facet>
-        <f:facet name="input">
-        <p:inputText id="unit" value="#{Projet.descProjet}" style="width:100%" />
-        </f:facet>
-         </p:cellEditor>
-        </p:column>
-         
-         
-        <p:column style="width:100%">
-        <p:rowEditor />
-                 <p:commandButton id="supp" onclick="PF('cd2').show()" icon="ui-icon-trash" style="color:red">
-                 <p:confirmDialog message="vous voulez le supprimer"
-header="Initiating destroy process" severity="alert"
-widgetVar="cd2">
-<p:commandButton value="Oui"  action="#{ProjetBean.suprimerProjet(ProjetBean)}" update=":f:p"
- oncomplete="PF('cd2').hide()"/>
-<p:commandButton value="Non" onclick="PF('cd2').hide();" type="button" />
-</p:confirmDialog>
-                 
-</p:commandButton>
-                         
-</p:column> 
-                
-     
+    <p:column headerText="titre">
+        <h:outputText value="#{Proj.titreProjet}" />
+    </p:column>
+ 
+    <p:column headerText="description">
+        <h:outputText value="#{Proj.descProjet}" />
+    </p:column>
+ 
+    <p:column headerText="nbr taches">
+        <h:outputText value="#{Proj.nbrTache}" />
+    </p:column>
 </p:dataTable>
+    
 
 
 
