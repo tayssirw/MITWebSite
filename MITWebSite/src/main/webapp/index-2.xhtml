@@ -66,61 +66,59 @@
 <!--=======content================================-->
 <div id="content"><div class="ic">More Website Templates @ TemplateMonster.com - July 22, 2013!</div>
 	<div class="container_12 bot-1">
-		<ul class="list-project">
-          <li class="grid_3">
-            <img src="images/page3-img1.jpg" alt=""/>
-            <h4>DOrtorrupts gtse </h4>
-            Hoero eos et accusamus et iusto odioll dignissimos ducimus qui bl abd gdihtiiti praesentium oluptatum deenir rf uiti jllei atque. Gorrupti quos doloregts et quaso molestias excepturi sint  hip occaecatiw. At vero eos et  hhj  jk kjusamutrelomiker
-oluty gtrew lokiju qwertynul. <br/>
-            <a href="#" class="btn">more</a>           
-          </li>
-          <li class="grid_3">
-            <img src="images/page3-img2.jpg" alt=""/>
-            <h4>aseo et Holccusaew</h4>
-            Sylity vero eos et accusamus et iustokill odio dignissimos ducimus qui bl abduyl gdihtii praesentium voluptatum deenir rfi uiti jll atque. Fertorrupti quos doloregtse et quas molestias excepturi sint  hipterq occaecati. Ast vero eos et  hhj  jklomiwe poli kjusamu s et iusto odio dignissm.<br/>
-            <a href="#" class="btn">more</a>    
-          </li>
-          <li class="grid_3">
-            <img src="images/page3-img3.jpg" alt=""/>
-            <h4>Hijus utrelkeret</h4>
-            Ko eos et accusamus et iusto odioyrew dignissimos ducimus qui bl abd gdihtiitt praesentium voluptatum deenir rf uiti jlle atque. Lolrrupti quos doloregts et quasi molestias excepturi sint  hip occaecatill. Ght vero eos et  hhj  jk kjusamuremmo li                              s et iusto odio dignissms ucimusy.<br/>
-            <a href="#" class="btn">more</a>    
-          </li>
-          <li class="grid_3">
-            <img src="images/page3-img4.jpg" alt=""/>
-            <h4>sagterikas Fdeyli</h4>
-            Xfvero eos et accusamus et iusto odiotri dignissimos ducimus qui bl abd gdihtiin praesentium voluptatum deenir rf uiti jllo atque. Zorrupti quos doloregts et quase molestias excepturi sint  hip occaecatib. Pt vero eos et  rewlo jk kjusamu wertilo masdes et iusto odio asgnissmk.<br/>
-            <a href="#" class="btn">more</a>    
-          </li>
-          <li class="grid_3">
-            <img src="images/page3-img5.jpg" alt=""/>
-            <h4>Dertorrupti quos </h4>
-            Sero eos et accusamus et iusto odioll dignissimos ducimus qui bl abd gdihtiiti praesentium voluptatum deenir rf uiti jlle atque. Corrupti quos doloregts et quaso molestias excepturi sint  hip occaecatiw. At vero eos et  hhj  jk kjusamutrelomiker
-oluty gtrew lokiju qwertynou.             <br/>
-            <a href="#" class="btn">more</a>           
-          </li>
-          <li class="grid_3">
-            <img src="images/page3-img6.jpg" alt=""/>
-            <h4>vero eos et accusam</h4>
-            Gylity vero eos et accusamus et iustokill odio dignissimos ducimus qui bl abduyl gdihtii praesentium voluptatum deenir rfi uiti jll atque. Dertorrupti quos doloregtse et quas molestias excepturi sint  hipterq occaecati. Ot vero eos et  hhj  jklomi poli kjusamu s et iusto odio dignissm.<br/>
-            <a href="#" class="btn">more</a>    
-          </li>
-          <li class="grid_3">
-            <img src="images/page3-img7.jpg" alt=""/>
-            <h4>kjusam utrelkere</h4>
-            No eos et accusamus et iusto odioyrew dignissimos ducimus qui bl abd gdihtiitt praesentium voluptatum deenir rf uiti jlle atque. Holrrupti quos doloregts et quasi molestias excepturi sint  hip occaecatill. Ght vero eos et  hhj  jk kjusamuremmo li                              s et iusto odio dignissms ucimus.<br/>
-            <a href="#" class="btn">more</a>    
-          </li>
-          <li class="grid_3">
-            <img src="images/page3-img8.jpg" alt=""/>
-            <h4>Ojusagteriker </h4>
-            Afvero eos et accusamus et iusto odiotri dignissimos ducimus qui bl abd gdihtiin praesentium voluptatum deenir rf uiti jllo atque. Dorrupti quos doloregts et quase molestias excepturi sint  hip occaecatib. Rt vero eos et  rewlo jk kjusamu wertilo masdes et iusto odio asgnissme.s<br/>
-            <a href="#" class="btn">more</a>    
-          </li>
-       </ul>   
-    </div>
-
-
+	
+	
+	<div class="grid_12">
+        	<h2 class="indent-2">New project</h2>
+		</div>
+        <div class="grid_5">
+        	<h:form id="form">
+                <div class="text-info">Remplir la formulaire pour ajouter un nouveau projet, All fields with an * are required</div>
+                <div class="success">
+                <strong>We will be in touch soon.</strong> </div>
+                <fieldset>
+                    <label class="name">
+                        <span class="title">Titre*</span>
+                        <input type="text" value="#{projetBean.projet.titreProjet} "/>
+                        <br class="clear"/>
+                        <span class="error error-empty">*This is not a valid name.</span><span class="empty error-empty">*This field is required.</span>
+                    </label>
+                    <label class="message">
+                        <span class="title">description*</span>
+                        <h:inputTextarea value="#{projetBean.projet.descProjet}" />
+                        <br class="clear"/>
+                        <span class="error">*The message is too short.</span> <span class="empty">*This field is required.</span>
+                    </label>
+                    <label class="name">
+                        <span class="title">nombre des tâches*</span>
+                        <input type="number" value="#{projetBean.projet.nbrTache} "/>
+                        <br class="clear"/>
+                        <span class="empty error-empty">*This field is required.</span>
+                    </label>
+                    <label>
+                        <span class="title">date début*</span>
+                        <input type="date" value="#{projetBean.projet.dateDebut} "/>
+                        <br class="clear"/>
+                        <span class="empty error-empty">*This field is required.</span>
+                    </label>
+                    <label>
+                    	<span class="title">date fin*</span>
+                        <input type="date" value="#{projetBean.projet.dateFin} "/>
+                        <br class="clear"/>
+                        <span class="empty error-empty">*This field is required.</span>
+                    </label>
+                    
+                    <div class="clear"></div>
+               <h:commandButton action="#{projetBean.ajout}"  value="Ajouter" />
+            <h:outputText value="#{projetBean.resAjout}"/>
+                  <!-- 
+                  <a data-type="submit" class="btn" onclick="#{ProjetBean.ajout()}">Ajouter</a>
+                   -->  
+            	</fieldset>
+            </h:form>
+	
+<DIV class="list-project">	  
+<h2 class="indent-2">Liste projet</h2>
 
 <p:dataTable var="Proj" value="#{projetBean.listProjet}">
     <p:column headerText="Id">
@@ -139,11 +137,44 @@ oluty gtrew lokiju qwertynou.             <br/>
         <h:outputText value="#{Proj.nbrTache}" />
     </p:column>
 </p:dataTable>
-    
+ 
+ 
+    <h:form> 
+    <p:dataScroller value="#{projetBean.listProjet}" var="projet" chunkSize="10">
+        <f:facet name="header">
+            Scroll Down to Load More Project
+        </f:facet>
+ 
+        <f:facet name="loader">
+            <p:commandButton type="button" value="More" icon="ui-icon-circle-triangle-s"/>
+        </f:facet>
+ 
+        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+            <p:graphicImage name="images/page3-img1.jpg" /> 
+ 
+            <p:outputPanel>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputText value="Id:" />
+                    <h:outputText value="#{projet.idProjet}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="Titre:" />
+                    <h:outputText value="#{projet.titreProjet}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="date début:" />
+                    <h:outputText value="#{projet.dateDebut}" style="font-weight: bold"/>
+                    
+                    <h:outputText value="date fin:" />
+                    <h:outputText value="#{projet.dateFin}" style="font-weight: bold"/>
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:panelGrid>
+    </p:dataScroller>
+</h:form>
+</DIV>
 
-
-
-
+	</div>
+	
+</div>
 
 
 

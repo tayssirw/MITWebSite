@@ -1,11 +1,13 @@
 package com.mit.entity;
 
-// Generated 20 avr. 2016 13:30:11 by Hibernate Tools 3.4.0.CR1
+// Generated 25 avr. 2016 17:35:48 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
@@ -21,7 +23,7 @@ import javax.persistence.TemporalType;
 @Table(name = "attestation", catalog = "mitdb")
 public class Attestation implements java.io.Serializable {
 
-	private int idAttestation;
+	private Integer idAttestation;
 	private Tache tache;
 	private Membre membre;
 	private Date dateAttestation;
@@ -30,15 +32,13 @@ public class Attestation implements java.io.Serializable {
 	public Attestation() {
 	}
 
-	public Attestation(int idAttestation, Tache tache, Membre membre) {
-		this.idAttestation = idAttestation;
+	public Attestation(Tache tache, Membre membre) {
 		this.tache = tache;
 		this.membre = membre;
 	}
 
-	public Attestation(int idAttestation, Tache tache, Membre membre,
-			Date dateAttestation, String descAttestation) {
-		this.idAttestation = idAttestation;
+	public Attestation(Tache tache, Membre membre, Date dateAttestation,
+			String descAttestation) {
 		this.tache = tache;
 		this.membre = membre;
 		this.dateAttestation = dateAttestation;
@@ -46,12 +46,13 @@ public class Attestation implements java.io.Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idAttestation", unique = true, nullable = false)
-	public int getIdAttestation() {
+	public Integer getIdAttestation() {
 		return this.idAttestation;
 	}
 
-	public void setIdAttestation(int idAttestation) {
+	public void setIdAttestation(Integer idAttestation) {
 		this.idAttestation = idAttestation;
 	}
 
@@ -78,7 +79,7 @@ public class Attestation implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "dateAttestation", length = 0)
+	@Column(name = "dateAttestation", length = 19)
 	public Date getDateAttestation() {
 		return this.dateAttestation;
 	}

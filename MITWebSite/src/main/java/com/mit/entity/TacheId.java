@@ -1,6 +1,6 @@
 package com.mit.entity;
 
-// Generated 20 avr. 2016 13:30:11 by Hibernate Tools 3.4.0.CR1
+// Generated 25 avr. 2016 17:35:48 by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

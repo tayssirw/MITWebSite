@@ -1,6 +1,6 @@
 package com.mit.entity;
 
-// Generated 20 avr. 2016 13:30:11 by Hibernate Tools 3.4.0.CR1
+// Generated 25 avr. 2016 17:35:48 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -25,7 +25,7 @@ import org.hibernate.annotations.Parameter;
 @Table(name = "contratprojet", catalog = "mitdb")
 public class Contratprojet implements java.io.Serializable {
 
-	private int idContrat;
+	private Integer idContrat;
 	private Societe societe;
 	private Contrat contrat;
 	private Projet projet;
@@ -56,11 +56,11 @@ public class Contratprojet implements java.io.Serializable {
 	@Id
 	@GeneratedValue(generator = "generator")
 	@Column(name = "idContrat", unique = true, nullable = false)
-	public int getIdContrat() {
+	public Integer getIdContrat() {
 		return this.idContrat;
 	}
 
-	public void setIdContrat(int idContrat) {
+	public void setIdContrat(Integer idContrat) {
 		this.idContrat = idContrat;
 	}
 
@@ -104,7 +104,7 @@ public class Contratprojet implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "dateDebut", length = 0)
+	@Column(name = "dateDebut", length = 19)
 	public Date getDateDebut() {
 		return this.dateDebut;
 	}
@@ -114,7 +114,7 @@ public class Contratprojet implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "dateFin", length = 0)
+	@Column(name = "dateFin", length = 19)
 	public Date getDateFin() {
 		return this.dateFin;
 	}

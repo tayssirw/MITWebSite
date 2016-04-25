@@ -1,6 +1,6 @@
 package com.mit.entity;
 
-// Generated 20 avr. 2016 13:30:11 by Hibernate Tools 3.4.0.CR1
+// Generated 25 avr. 2016 17:35:48 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -31,7 +31,7 @@ public class Tache implements java.io.Serializable {
 	private Projet projet;
 	private String nomTache;
 	private String descTache;
-	private Boolean etatTache;
+	private String etatTache;
 	private Date dateD;
 	private Date dateF;
 	private Set<Tache> taches = new HashSet<Tache>(0);
@@ -47,7 +47,7 @@ public class Tache implements java.io.Serializable {
 	}
 
 	public Tache(TacheId id, Tache tache, Projet projet, String nomTache,
-			String descTache, Boolean etatTache, Date dateD, Date dateF,
+			String descTache, String etatTache, Date dateD, Date dateF,
 			Set<Tache> taches, Set<Contrattache> contrattaches,
 			Set<Attestation> attestations) {
 		this.id = id;
@@ -115,17 +115,17 @@ public class Tache implements java.io.Serializable {
 		this.descTache = descTache;
 	}
 
-	@Column(name = "etatTache")
-	public Boolean getEtatTache() {
+	@Column(name = "etatTache", length = 50)
+	public String getEtatTache() {
 		return this.etatTache;
 	}
 
-	public void setEtatTache(Boolean etatTache) {
+	public void setEtatTache(String etatTache) {
 		this.etatTache = etatTache;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "dateD", length = 0)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dateD", length = 10)
 	public Date getDateD() {
 		return this.dateD;
 	}
@@ -134,8 +134,8 @@ public class Tache implements java.io.Serializable {
 		this.dateD = dateD;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "dateF", length = 0)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dateF", length = 10)
 	public Date getDateF() {
 		return this.dateF;
 	}

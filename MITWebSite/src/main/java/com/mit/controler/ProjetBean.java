@@ -35,7 +35,6 @@ public class ProjetBean implements Serializable{
 		projetDAO= (ProjetDAO) context.getBean("projetDao");
 		projet=new Projet();
 		resAjout="";
-		System.out.println("aaaaaaaa");
 	}
 	
 	

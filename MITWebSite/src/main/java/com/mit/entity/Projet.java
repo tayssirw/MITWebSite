@@ -1,13 +1,18 @@
 package com.mit.entity;
 
-// Generated 20 avr. 2016 13:30:11 by Hibernate Tools 3.4.0.CR1
+// Generated 25 avr. 2016 17:35:48 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,7 +26,7 @@ import javax.persistence.TemporalType;
 @Table(name = "projet", catalog = "mitdb")
 public class Projet implements java.io.Serializable {
 
-	private int idProjet;
+	private Integer idProjet;
 	private String titreProjet;
 	private String descProjet;
 	private Integer nbrTache;
@@ -29,18 +34,20 @@ public class Projet implements java.io.Serializable {
 	private Date dateFin;
 	private Set<Tache> taches = new HashSet<Tache>(0);
 	private Set<Contratprojet> contratprojets = new HashSet<Contratprojet>(0);
+	
+	public Projet(){}
 
-	public Projet() {
+	public Projet(String t, String des, Integer i, Date d1, Date d2) {
+		this.titreProjet=t;
+		this.descProjet=des;
+		this.nbrTache=i;
+		this.dateDebut=d1;
+		this.dateFin=d2;
 	}
 
-	public Projet(int idProjet) {
-		this.idProjet = idProjet;
-	}
-
-	public Projet(int idProjet, String titreProjet, String descProjet,
-			Integer nbrTache, Date dateDebut, Date dateFin, Set<Tache> taches,
+	public Projet(String titreProjet, String descProjet, Integer nbrTache,
+			Date dateDebut, Date dateFin, Set<Tache> taches,
 			Set<Contratprojet> contratprojets) {
-		this.idProjet = idProjet;
 		this.titreProjet = titreProjet;
 		this.descProjet = descProjet;
 		this.nbrTache = nbrTache;
@@ -51,12 +58,13 @@ public class Projet implements java.io.Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idProjet", unique = true, nullable = false)
-	public int getIdProjet() {
+	public Integer getIdProjet() {
 		return this.idProjet;
 	}
 
-	public void setIdProjet(int idProjet) {
+	public void setIdProjet(Integer idProjet) {
 		this.idProjet = idProjet;
 	}
 
@@ -87,8 +95,8 @@ public class Projet implements java.io.Serializable {
 		this.nbrTache = nbrTache;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "dateDebut", length = 0)
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "dateDebut", length = 19)
 	public Date getDateDebut() {
 		return this.dateDebut;
 	}
@@ -97,8 +105,8 @@ public class Projet implements java.io.Serializable {
 		this.dateDebut = dateDebut;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "dateFin", length = 0)
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "dateFin", length = 19)
 	public Date getDateFin() {
 		return this.dateFin;
 	}

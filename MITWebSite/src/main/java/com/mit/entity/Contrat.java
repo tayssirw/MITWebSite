@@ -1,10 +1,12 @@
 package com.mit.entity;
 
-// Generated 20 avr. 2016 13:30:11 by Hibernate Tools 3.4.0.CR1
+// Generated 25 avr. 2016 17:35:48 by Hibernate Tools 3.4.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -16,31 +18,26 @@ import javax.persistence.Table;
 @Table(name = "contrat", catalog = "mitdb")
 public class Contrat implements java.io.Serializable {
 
-	private int idContrat;
+	private Integer idContrat;
 	private Contrattache contrattache;
 	private Contratprojet contratprojet;
 
 	public Contrat() {
 	}
 
-	public Contrat(int idContrat) {
-		this.idContrat = idContrat;
-	}
-
-	public Contrat(int idContrat, Contrattache contrattache,
-			Contratprojet contratprojet) {
-		this.idContrat = idContrat;
+	public Contrat(Contrattache contrattache, Contratprojet contratprojet) {
 		this.contrattache = contrattache;
 		this.contratprojet = contratprojet;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idContrat", unique = true, nullable = false)
-	public int getIdContrat() {
+	public Integer getIdContrat() {
 		return this.idContrat;
 	}
 
-	public void setIdContrat(int idContrat) {
+	public void setIdContrat(Integer idContrat) {
 		this.idContrat = idContrat;
 	}
 

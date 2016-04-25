@@ -2,6 +2,8 @@ package com.mit.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +29,9 @@ public class ProjetTest {
 
 	@Test
 	public void testSaveOrUpdate() {
-	Projet p= new Projet(3);
+		Date d1=new Date(01/03/2016);
+		Date d2=new Date(03/05/2016);
+	Projet p= new Projet("test","test de projet",4,d1,d2);
 	projetDAO.saveOrUpdate(p);
 	
 	}
