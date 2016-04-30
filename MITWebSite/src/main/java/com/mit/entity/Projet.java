@@ -26,6 +26,10 @@ import javax.persistence.TemporalType;
 @Table(name = "projet", catalog = "mitdb")
 public class Projet implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	
 	private Integer idProjet;
 	private String titreProjet;
 	private String descProjet;

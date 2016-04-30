@@ -1,11 +1,15 @@
 package com.mit.controler;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
+import org.primefaces.event.SelectEvent;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
@@ -21,9 +25,10 @@ public class ProjetBean implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -6818303104117656007L;
+	private static transient ProjetDAO projetDAO;
+	
 	private static ClassPathXmlApplicationContext context;
-	private static ProjetDAO projetDAO;
 	private Projet projet;
 	private String resAjout;
 	private List<Projet> listProjet;
@@ -37,13 +42,20 @@ public class ProjetBean implements Serializable{
 		resAjout="";
 	}
 	
+	 public void onDateSelect(SelectEvent event) {
+	        FacesContext facesContext = FacesContext.getCurrentInstance();
+	        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+	        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
+	    }
 	
 	public String ajout()
 	{
 		
 		try {
 			resAjout="";
+			
 			projetDAO.saveOrUpdate(projet);
+			System.out.println(projet.getTitreProjet()+" "+projet.getNbrTache()+" "+projet.getDateDebut()+" "+projet.getDateFin());
 			projet= new Projet();
 			resAjout = "projet ajouté";
 			return"valide";
