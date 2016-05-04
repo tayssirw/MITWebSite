@@ -1,6 +1,6 @@
 package com.mit.entity;
 
-// Generated 25 avr. 2016 17:35:48 by Hibernate Tools 3.4.0.CR1
+// Generated 30 avr. 2016 14:36:04 by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,8 +26,9 @@ public class Membre implements java.io.Serializable {
 	private String prenom;
 	private String adr;
 	private Integer tel;
-	private Set<Contrattache> contrattaches = new HashSet<Contrattache>(0);
+	private Set<Contrat> contrats = new HashSet<Contrat>(0);
 	private Set<Attestation> attestations = new HashSet<Attestation>(0);
+	private Set<Tachemembre> tachemembres = new HashSet<Tachemembre>(0);
 
 	public Membre() {
 	}
@@ -38,7 +39,8 @@ public class Membre implements java.io.Serializable {
 
 	public Membre(String idMembre, Integer cin, String password, String email,
 			String nom, String prenom, String adr, Integer tel,
-			Set<Contrattache> contrattaches, Set<Attestation> attestations) {
+			Set<Contrat> contrats, Set<Attestation> attestations,
+			Set<Tachemembre> tachemembres) {
 		this.idMembre = idMembre;
 		this.cin = cin;
 		this.password = password;
@@ -47,8 +49,9 @@ public class Membre implements java.io.Serializable {
 		this.prenom = prenom;
 		this.adr = adr;
 		this.tel = tel;
-		this.contrattaches = contrattaches;
+		this.contrats = contrats;
 		this.attestations = attestations;
+		this.tachemembres = tachemembres;
 	}
 
 	@Id
@@ -125,12 +128,12 @@ public class Membre implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "membre")
-	public Set<Contrattache> getContrattaches() {
-		return this.contrattaches;
+	public Set<Contrat> getContrats() {
+		return this.contrats;
 	}
 
-	public void setContrattaches(Set<Contrattache> contrattaches) {
-		this.contrattaches = contrattaches;
+	public void setContrats(Set<Contrat> contrats) {
+		this.contrats = contrats;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "membre")
@@ -140,6 +143,15 @@ public class Membre implements java.io.Serializable {
 
 	public void setAttestations(Set<Attestation> attestations) {
 		this.attestations = attestations;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "membre")
+	public Set<Tachemembre> getTachemembres() {
+		return this.tachemembres;
+	}
+
+	public void setTachemembres(Set<Tachemembre> tachemembres) {
+		this.tachemembres = tachemembres;
 	}
 
 }

@@ -1,12 +1,14 @@
 package com.mit.entity;
 
-// Generated 25 avr. 2016 17:35:48 by Hibernate Tools 3.4.0.CR1
+// Generated 30 avr. 2016 14:36:04 by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,35 +20,33 @@ import javax.persistence.Table;
 @Table(name = "societe", catalog = "mitdb")
 public class Societe implements java.io.Serializable {
 
-	private int idSociete;
+	private Integer idSociete;
 	private String nomSociete;
 	private String adrSociete;
-	private String contactSociete;
-	private Set<Contratprojet> contratprojets = new HashSet<Contratprojet>(0);
+	private Long telSociete;
+	private String emailSociete;
+	private Set<Contrat> contrats = new HashSet<Contrat>(0);
 
 	public Societe() {
 	}
 
-	public Societe(int idSociete) {
-		this.idSociete = idSociete;
-	}
-
-	public Societe(int idSociete, String nomSociete, String adrSociete,
-			String contactSociete, Set<Contratprojet> contratprojets) {
-		this.idSociete = idSociete;
+	public Societe(String nomSociete, String adrSociete, Long telSociete,
+			String emailSociete, Set<Contrat> contrats) {
 		this.nomSociete = nomSociete;
 		this.adrSociete = adrSociete;
-		this.contactSociete = contactSociete;
-		this.contratprojets = contratprojets;
+		this.telSociete = telSociete;
+		this.emailSociete = emailSociete;
+		this.contrats = contrats;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idSociete", unique = true, nullable = false)
-	public int getIdSociete() {
+	public Integer getIdSociete() {
 		return this.idSociete;
 	}
 
-	public void setIdSociete(int idSociete) {
+	public void setIdSociete(Integer idSociete) {
 		this.idSociete = idSociete;
 	}
 
@@ -68,22 +68,31 @@ public class Societe implements java.io.Serializable {
 		this.adrSociete = adrSociete;
 	}
 
-	@Column(name = "contactSociete", length = 254)
-	public String getContactSociete() {
-		return this.contactSociete;
+	@Column(name = "telSociete")
+	public Long getTelSociete() {
+		return this.telSociete;
 	}
 
-	public void setContactSociete(String contactSociete) {
-		this.contactSociete = contactSociete;
+	public void setTelSociete(Long telSociete) {
+		this.telSociete = telSociete;
+	}
+
+	@Column(name = "emailSociete", length = 254)
+	public String getEmailSociete() {
+		return this.emailSociete;
+	}
+
+	public void setEmailSociete(String emailSociete) {
+		this.emailSociete = emailSociete;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "societe")
-	public Set<Contratprojet> getContratprojets() {
-		return this.contratprojets;
+	public Set<Contrat> getContrats() {
+		return this.contrats;
 	}
 
-	public void setContratprojets(Set<Contratprojet> contratprojets) {
-		this.contratprojets = contratprojets;
+	public void setContrats(Set<Contrat> contrats) {
+		this.contrats = contrats;
 	}
 
 }

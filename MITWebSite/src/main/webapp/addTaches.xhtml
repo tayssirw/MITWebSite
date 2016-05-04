@@ -50,7 +50,7 @@
                     </li>
                     <li><a href="index-2.xhtml">PROJECTS</a>
                     	<ul>
-                            <li class="current"><a href="addProject.xhtml">NEW PROJECT</a></li>
+                            <li class="current"><a href="addTaches.xhtml">Ajouter taches</a></li>
                         </ul>
                      </li>
                     <li><a href="index-3.xhtml">SERVICES</a></li>
@@ -70,55 +70,45 @@
 		</div>
         <div class="grid_5">
         	<h:form id="form">
-                <div class="text-info">All fields with an * are required</div>
-                <div class="success">Contact form submitted!<br/>
-                <strong>We will be in touch soon.</strong> </div>
-                <fieldset>
-                <label class="name">
-                        <span class="title">ID*</span>
-                         <input type="number" value="#{projetBean.projet.idProjet} "/>
+              <h:panelGrid id="tache">
+              <label class="name">
+              <span class="title">Projet</span>
+              <h:selectOneMenu value="#{projetBean.projet}">
+               <f:selectItem itemLabel="..." noSelectionOption="true" />
+               <f:selectItems value="#{projetBean.listProjet}" var="entry" itemValue="#{entry.idProjet}" itemLabel="#{entry.titreProjet}"/>
+               
+              </h:selectOneMenu>
+              </label>
+					<label class="name">
+                        <span class="title">Nom tache*</span>
+                       <p:inputText value="#{projetBean.tache.nomTache}"></p:inputText>
                         <br class="clear"/>
-                        <span class="empty error-empty">*This field is required.</span>
-                    </label>
-                
-                    <label class="name">
-                        <span class="title">Titre*</span>
-                        <input type="text" value="#{projetBean.projet.titreProjet} "/>
-                        <br class="clear"/>
-                        <span class="error error-empty">*This is not a valid name.</span><span class="empty error-empty">*This field is required.</span>
                     </label>
                     <label class="message">
                         <span class="title">description*</span>
-                        <h:inputTextarea value="#{projetBean.projet.descProjet}" />
+                        <h:inputTextarea value="#{projetBean.tache.descTache}" />
                         <br class="clear"/>
-                        <span class="error">*The message is too short.</span> <span class="empty">*This field is required.</span>
-                    </label>
-                    <label class="name">
-                        <span class="title">nombre des tâches*</span>
-                        <input type="number" value="#{projetBean.projet.nbrTache} "/>
-                        <br class="clear"/>
-                        <span class="empty error-empty">*This field is required.</span>
-                    </label>
-                    <label>
-                        <span class="title">date début*</span>
-                        <input type="date" value="#{projetBean.projet.dateDebut} "/>
-                        <br class="clear"/>
-                        <span class="empty error-empty">*This field is required.</span>
-                    </label>
-                    <label>
-                    	<span class="title">date fin*</span>
-                        <input type="date" value="#{projetBean.projet.dateFin} "/>
-                        <br class="clear"/>
-                        <span class="empty error-empty">*This field is required.</span>
                     </label>
                     
+                     <label class="name">
+                        <span class="title">Date début*</span>
+                         <p:calendar id="event" value="#{projetBean.tache.dateD}">
+                         <p:ajax event="dateSelect" listener="#{projetBean.onDateSelect}"  />
+                         </p:calendar>
+                        <br class="clear"/>
+                    </label>
+                    
+                    
+ 					<label class="name">
+                        <span class="title">Date fin*</span>
+                         <p:calendar value="#{projetBean.tache.dateF}"></p:calendar>
+                        <br class="clear"/>
+                    </label> 
                     <div class="clear"></div>
-               <h:commandButton action="#{projetBean.ajout()}"  value="Ajouter" />
-            <h:outputText value="#{projetBean.resAjout}"/>
-                  <!-- 
-                  <a data-type="submit" class="btn" onclick="#{ProjetBean.ajout()}">Ajouter</a>
-                   -->  
-            	</fieldset>
+                   
+               <h:commandButton action="#{projetBean.ajoutTache()}"  value="Ajouter" />
+	</h:panelGrid>
+               
             </h:form>
 		</div>
         

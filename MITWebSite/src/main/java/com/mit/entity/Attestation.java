@@ -1,6 +1,6 @@
 package com.mit.entity;
 
-// Generated 25 avr. 2016 17:35:48 by Hibernate Tools 3.4.0.CR1
+// Generated 30 avr. 2016 14:36:04 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,25 +23,27 @@ import javax.persistence.TemporalType;
 public class Attestation implements java.io.Serializable {
 
 	private Integer idAttestation;
-	private Tache tache;
 	private Membre membre;
+	private Projet projet;
 	private Date dateAttestation;
 	private String descAttestation;
+	private String attribut35;
 
 	public Attestation() {
 	}
 
-	public Attestation(Tache tache, Membre membre) {
-		this.tache = tache;
+	public Attestation(Membre membre, Projet projet) {
 		this.membre = membre;
+		this.projet = projet;
 	}
 
-	public Attestation(Tache tache, Membre membre, Date dateAttestation,
-			String descAttestation) {
-		this.tache = tache;
+	public Attestation(Membre membre, Projet projet, Date dateAttestation,
+			String descAttestation, String attribut35) {
 		this.membre = membre;
+		this.projet = projet;
 		this.dateAttestation = dateAttestation;
 		this.descAttestation = descAttestation;
+		this.attribut35 = attribut35;
 	}
 
 	@Id
@@ -57,18 +58,6 @@ public class Attestation implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumns({
-			@JoinColumn(name = "idProjet", referencedColumnName = "idProjet", nullable = false),
-			@JoinColumn(name = "idTache", referencedColumnName = "idTache", nullable = false) })
-	public Tache getTache() {
-		return this.tache;
-	}
-
-	public void setTache(Tache tache) {
-		this.tache = tache;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idMembre", nullable = false)
 	public Membre getMembre() {
 		return this.membre;
@@ -78,8 +67,18 @@ public class Attestation implements java.io.Serializable {
 		this.membre = membre;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "dateAttestation", length = 19)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idProjet", nullable = false)
+	public Projet getProjet() {
+		return this.projet;
+	}
+
+	public void setProjet(Projet projet) {
+		this.projet = projet;
+	}
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dateAttestation", length = 10)
 	public Date getDateAttestation() {
 		return this.dateAttestation;
 	}
@@ -95,6 +94,15 @@ public class Attestation implements java.io.Serializable {
 
 	public void setDescAttestation(String descAttestation) {
 		this.descAttestation = descAttestation;
+	}
+
+	@Column(name = "Attribut_35", length = 10)
+	public String getAttribut35() {
+		return this.attribut35;
+	}
+
+	public void setAttribut35(String attribut35) {
+		this.attribut35 = attribut35;
 	}
 
 }

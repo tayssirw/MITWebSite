@@ -1,18 +1,17 @@
 package com.mit.entity;
 
-// Generated 25 avr. 2016 17:35:48 by Hibernate Tools 3.4.0.CR1
+// Generated 30 avr. 2016 14:36:04 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -26,69 +25,49 @@ import javax.persistence.TemporalType;
 @Table(name = "tache", catalog = "mitdb")
 public class Tache implements java.io.Serializable {
 
-	private TacheId id;
-	private Tache tache;
+	private Integer idTache;
 	private Projet projet;
 	private String nomTache;
 	private String descTache;
-	private String etatTache;
 	private Date dateD;
 	private Date dateF;
-	private Set<Tache> taches = new HashSet<Tache>(0);
-	private Set<Contrattache> contrattaches = new HashSet<Contrattache>(0);
-	private Set<Attestation> attestations = new HashSet<Attestation>(0);
+	private Boolean etatTache;
+	private Set<Contrat> contrats = new HashSet<Contrat>(0);
+	private Set<Tachemembre> tachemembres = new HashSet<Tachemembre>(0);
 
 	public Tache() {
 	}
 
-	public Tache(TacheId id, Projet projet) {
-		this.id = id;
+	public Tache(Projet projet) {
 		this.projet = projet;
 	}
 
-	public Tache(TacheId id, Tache tache, Projet projet, String nomTache,
-			String descTache, String etatTache, Date dateD, Date dateF,
-			Set<Tache> taches, Set<Contrattache> contrattaches,
-			Set<Attestation> attestations) {
-		this.id = id;
-		this.tache = tache;
+	public Tache(Projet projet, String nomTache, String descTache, Date dateD,
+			Date dateF, Boolean etatTache, Set<Contrat> contrats,
+			Set<Tachemembre> tachemembres) {
 		this.projet = projet;
 		this.nomTache = nomTache;
 		this.descTache = descTache;
-		this.etatTache = etatTache;
 		this.dateD = dateD;
 		this.dateF = dateF;
-		this.taches = taches;
-		this.contrattaches = contrattaches;
-		this.attestations = attestations;
+		this.etatTache = etatTache;
+		this.contrats = contrats;
+		this.tachemembres = tachemembres;
 	}
 
-	@EmbeddedId
-	@AttributeOverrides({
-			@AttributeOverride(name = "idProjet", column = @Column(name = "idProjet", nullable = false)),
-			@AttributeOverride(name = "idTache", column = @Column(name = "idTache", nullable = false)) })
-	public TacheId getId() {
-		return this.id;
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "idTache", unique = true, nullable = false)
+	public Integer getIdTache() {
+		return this.idTache;
 	}
 
-	public void setId(TacheId id) {
-		this.id = id;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumns({
-			@JoinColumn(name = "Tac_idProjet", referencedColumnName = "idProjet"),
-			@JoinColumn(name = "Tac_idTache", referencedColumnName = "idTache") })
-	public Tache getTache() {
-		return this.tache;
-	}
-
-	public void setTache(Tache tache) {
-		this.tache = tache;
+	public void setIdTache(Integer idTache) {
+		this.idTache = idTache;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idProjet", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "idProjet", nullable = false)
 	public Projet getProjet() {
 		return this.projet;
 	}
@@ -115,15 +94,6 @@ public class Tache implements java.io.Serializable {
 		this.descTache = descTache;
 	}
 
-	@Column(name = "etatTache", length = 50)
-	public String getEtatTache() {
-		return this.etatTache;
-	}
-
-	public void setEtatTache(String etatTache) {
-		this.etatTache = etatTache;
-	}
-
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dateD", length = 10)
 	public Date getDateD() {
@@ -144,31 +114,31 @@ public class Tache implements java.io.Serializable {
 		this.dateF = dateF;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tache")
-	public Set<Tache> getTaches() {
-		return this.taches;
+	@Column(name = "etatTache")
+	public Boolean getEtatTache() {
+		return this.etatTache;
 	}
 
-	public void setTaches(Set<Tache> taches) {
-		this.taches = taches;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tache")
-	public Set<Contrattache> getContrattaches() {
-		return this.contrattaches;
-	}
-
-	public void setContrattaches(Set<Contrattache> contrattaches) {
-		this.contrattaches = contrattaches;
+	public void setEtatTache(Boolean etatTache) {
+		this.etatTache = etatTache;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tache")
-	public Set<Attestation> getAttestations() {
-		return this.attestations;
+	public Set<Contrat> getContrats() {
+		return this.contrats;
 	}
 
-	public void setAttestations(Set<Attestation> attestations) {
-		this.attestations = attestations;
+	public void setContrats(Set<Contrat> contrats) {
+		this.contrats = contrats;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tache")
+	public Set<Tachemembre> getTachemembres() {
+		return this.tachemembres;
+	}
+
+	public void setTachemembres(Set<Tachemembre> tachemembres) {
+		this.tachemembres = tachemembres;
 	}
 
 }

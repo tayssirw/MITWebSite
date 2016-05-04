@@ -27,7 +27,7 @@ public class MembreTest {
 
 	@Test
 	public void testSaveOrUpdate() {
-		Membre m =new Membre("Member1");
+		Membre m =new Membre("Member2");
 		membreDAO.saveOrUpdate(m);
 		
 	}

@@ -1,18 +1,15 @@
 package com.mit.entity;
 
-// Generated 25 avr. 2016 17:35:48 by Hibernate Tools 3.4.0.CR1
+// Generated 30 avr. 2016 14:36:04 by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-
 import static javax.persistence.GenerationType.IDENTITY;
-
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -26,10 +23,6 @@ import javax.persistence.TemporalType;
 @Table(name = "projet", catalog = "mitdb")
 public class Projet implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	
 	private Integer idProjet;
 	private String titreProjet;
 	private String descProjet;
@@ -37,28 +30,35 @@ public class Projet implements java.io.Serializable {
 	private Date dateDebut;
 	private Date dateFin;
 	private Set<Tache> taches = new HashSet<Tache>(0);
-	private Set<Contratprojet> contratprojets = new HashSet<Contratprojet>(0);
-	
-	public Projet(){}
+	private Set<Attestation> attestations = new HashSet<Attestation>(0);
+	private Set<Contrat> contrats = new HashSet<Contrat>(0);
 
-	public Projet(String t, String des, Integer i, Date d1, Date d2) {
-		this.titreProjet=t;
-		this.descProjet=des;
-		this.nbrTache=i;
-		this.dateDebut=d1;
-		this.dateFin=d2;
+	public Projet() {
 	}
+	
+	public Projet(String titreProjet, String descProjet,
+			Integer nbrTache, Date dateDebut, Date dateFin) {
+		super();
+		
+		this.titreProjet = titreProjet;
+		this.descProjet = descProjet;
+		this.nbrTache = nbrTache;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+	}
+
 
 	public Projet(String titreProjet, String descProjet, Integer nbrTache,
 			Date dateDebut, Date dateFin, Set<Tache> taches,
-			Set<Contratprojet> contratprojets) {
+			Set<Attestation> attestations, Set<Contrat> contrats) {
 		this.titreProjet = titreProjet;
 		this.descProjet = descProjet;
 		this.nbrTache = nbrTache;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.taches = taches;
-		this.contratprojets = contratprojets;
+		this.attestations = attestations;
+		this.contrats = contrats;
 	}
 
 	@Id
@@ -99,8 +99,8 @@ public class Projet implements java.io.Serializable {
 		this.nbrTache = nbrTache;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "dateDebut", length = 19)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dateDebut", length = 10)
 	public Date getDateDebut() {
 		return this.dateDebut;
 	}
@@ -109,8 +109,8 @@ public class Projet implements java.io.Serializable {
 		this.dateDebut = dateDebut;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "dateFin", length = 19)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dateFin", length = 10)
 	public Date getDateFin() {
 		return this.dateFin;
 	}
@@ -129,12 +129,21 @@ public class Projet implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "projet")
-	public Set<Contratprojet> getContratprojets() {
-		return this.contratprojets;
+	public Set<Attestation> getAttestations() {
+		return this.attestations;
 	}
 
-	public void setContratprojets(Set<Contratprojet> contratprojets) {
-		this.contratprojets = contratprojets;
+	public void setAttestations(Set<Attestation> attestations) {
+		this.attestations = attestations;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "projet")
+	public Set<Contrat> getContrats() {
+		return this.contrats;
+	}
+
+	public void setContrats(Set<Contrat> contrats) {
+		this.contrats = contrats;
 	}
 
 }

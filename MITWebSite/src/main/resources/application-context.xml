@@ -24,12 +24,12 @@
 			<list>
 				<value>com.mit.entity.Attestation</value>
 				<value>com.mit.entity.Contrat</value>
-				<value>com.mit.entity.Contratprojet</value>
-				<value>com.mit.entity.Contrattache</value>
 				<value>com.mit.entity.Membre</value>
 				<value>com.mit.entity.Projet</value>
 				<value>com.mit.entity.Societe</value>
 				<value>com.mit.entity.Tache</value>
+				<value>com.mit.entity.Tachemembre</value>
+				<value>com.mit.entity.TachemembreId</value>
 
 			</list>
 		</property>

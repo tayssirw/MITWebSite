@@ -1,15 +1,23 @@
 <?xml version="1.0"?>
 <faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-
-
-	<application>
-		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
-	</application>
-	<managed-bean>
-	<managed-bean-name>projetBean</managed-bean-name>
-	<managed-bean-class>com.mit.controler.ProjetBean</managed-bean-class>
-	<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+ <managed-bean>
+  <managed-bean-name>projetBean</managed-bean-name>
+  <managed-bean-class>com.mit.controler.ProjetBean</managed-bean-class>
+  <managed-bean-scope>session</managed-bean-scope>
+ </managed-bean>
+ 
+ 
+ <navigation-rule>
+  <from-view-id>/index-2.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>valide</from-outcome>
+   <to-view-id>/addTaches.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ 
+ 
+ <application>
+  <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+ </application>
 </faces-config>

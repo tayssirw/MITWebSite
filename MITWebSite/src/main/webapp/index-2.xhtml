@@ -51,7 +51,7 @@
                     </li>
                     <li class="current"><a href="index-2.xhtml">PROJECTS</a>
                      <ul>
-                            <li><a href="addProject.xhtml">NEW PROJECT</a></li>
+                            <li><a href="addTaches.xhtml">Ajouter taches</a></li>
                         </ul>
                     </li>
                     <li><a href="index-3.xhtml">SERVICES</a></li>
@@ -117,7 +117,7 @@
                    
                <h:commandButton action="#{projetBean.ajout}"  value="Ajouter" />
             <h:outputText value="#{projetBean.resAjout}"/>
-             <h:outputText value="#{projetBean.projet.titreProjet}" />
+       
                   <!-- 
                   <a data-type="submit" class="btn" onclick="#{ProjetBean.ajout()}">Ajouter</a>
                    -->  
@@ -127,10 +127,7 @@
 	</div>
 	<div class="grid_6 push_1">
 	<h:form>
-	<h:panelGrid columns="2">
-	<h:inputText value="" /><br/>
-	<h:inputText value="" />
-	</h:panelGrid>
+	
 	</h:form>
 	</div>
 	
@@ -151,9 +148,9 @@
         <h:outputText value="#{Proj.descProjet}" />
     </p:column>
  
-    <p:column headerText="nbr taches">
-        <h:outputText value="#{Proj.nbrTache}" />
-    </p:column>
+<!--     <p:column headerText="nbr taches"> -->
+<!--         <h:outputText value="#{Proj.nbrTache}" /> -->
+<!--     </p:column> -->
     
     <p:column headerText="date début">
         <h:outputText value="#{Proj.dateDebut}" />
